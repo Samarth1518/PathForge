@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   Zap, LayoutDashboard, Rocket, Target, Map, Code2, Calendar, MessageCircle,
-  Bell, AlertCircle, CheckCircle, Check, X, FileText, Database, Network,
+  AlertCircle, CheckCircle, Check, X, FileText, Database, Network,
   Brain, TrendingUp, ArrowLeft,
 } from "lucide-react";
 import {
@@ -70,6 +70,7 @@ export default function DashboardPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [addedToRoadmap, setAddedToRoadmap] = useState<Set<number>>(new Set());
+  const [showProfileInfo, setShowProfileInfo] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
 
   const toggleDay = (day: number) => {
@@ -391,13 +392,28 @@ export default function DashboardPage() {
             <h1 style={{ color: "#ffffff", fontWeight: 700, fontSize: "1.4rem" }}>Your Career Workspace</h1>
             <p style={{ color: "#64748b", fontSize: "0.82rem", marginTop: "2px" }}>AI Modules / Overview</p>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <button style={{ width: "40px", height: "40px", borderRadius: "10px", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>
-              <Bell size={17} color="#94a3b8" />
-            </button>
-            <div style={{ width: "40px", height: "40px", borderRadius: "9999px", background: "linear-gradient(135deg, #7c3aed, #06b6d4)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, color: "#ffffff", fontSize: "0.875rem" }}>
+          <div style={{ position: "relative", display: "flex", alignItems: "center", gap: "12px" }}>
+            <button
+              onClick={() => setShowProfileInfo((prev) => !prev)}
+              style={{ width: "40px", height: "40px", borderRadius: "9999px", background: "linear-gradient(135deg, #7c3aed, #06b6d4)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, color: "#ffffff", fontSize: "0.875rem", border: "none", cursor: "pointer" }}
+              aria-label="Open profile info"
+            >
               {initials}
-            </div>
+            </button>
+            {showProfileInfo && (
+              <div style={{ position: "absolute", right: 0, top: "calc(100% + 0.75rem)", width: "260px", background: "rgba(15,23,42,0.95)", border: "1px solid rgba(124,58,237,0.2)", borderRadius: "16px", padding: "1rem", boxShadow: "0 18px 40px rgba(0,0,0,0.35)", zIndex: 50 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
+                  <div style={{ width: "38px", height: "38px", borderRadius: "9999px", background: "linear-gradient(135deg, #7c3aed, #06b6d4)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 700 }}>{initials}</div>
+                  <div>
+                    <p style={{ color: "#fff", fontWeight: 700, margin: 0 }}>{userName}</p>
+                    <p style={{ color: "#94a3b8", fontSize: "0.78rem", margin: "0.25rem 0 0" }}>AI developer · Founder</p>
+                  </div>
+                </div>
+                <div style={{ color: "#cbd5e1", fontSize: "0.82rem", lineHeight: 1.6 }}>
+                  Welcome back, {userName.split(" ")[0]}! Here you can access your profile details and keep your AI career dashboard organized.
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
