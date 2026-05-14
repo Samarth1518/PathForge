@@ -25,8 +25,8 @@ const navItems = [
   { icon: Rocket, label: "Career Simulation", id: "career-simulation" },
   { icon: Target, label: "Skill Gap", id: "skill-gap" },
   { icon: Map, label: "Roadmap", id: "roadmap" },
-  { icon: Code2, label: "Projects", id: "projects" },
   { icon: Calendar, label: "7-Day Plan", id: "7-day-plan" },
+  { icon: Code2, label: "Projects", id: "projects" },
   { icon: MessageCircle, label: "AI Chat", id: "ai-chat" },
 ];
 
