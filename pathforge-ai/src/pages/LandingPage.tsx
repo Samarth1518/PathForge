@@ -299,7 +299,7 @@ export default function LandingPage() {
           </div>
         </div>
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "1.5rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <p style={{ color: "#475569", fontSize: "0.75rem" }}>© 2025 PathForge AI — Built with Ollama · LLaMA 3.2 · LangGraph · ChromaDB</p>
+          <p style={{ color: "#475569", fontSize: "0.75rem" }}>© 2025 PathForge AI — Built by Samarth N G · Built with Ollama · LLaMA 3.2 · LangGraph · ChromaDB</p>
           <p style={{ color: "#475569", fontSize: "0.75rem" }}>100% Local · Zero API Costs</p>
         </div>
       </footer>
